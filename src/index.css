@@ -1,0 +1,48 @@
+* {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+}
+.center {
+	text-align: center;
+}
+.previewimg {
+	width: 202px;
+	height: 234px;
+}
+.container-resume {
+	position: absolute;
+	width: 459px;
+	height: 100%;
+	left: 0px;
+	top: 0px;
+	background-color: #1e213a;
+}
+.grade-value {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 192px;
+	height: 169px;
+	margin: 0 auto 0 auto;
+	font-family: Raleway;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 70px;
+	color: #e7e7eb;
+}
+
+.type-value {
+	font-family: Raleway;
+	font-style: normal;
+	font-size: 30px;
+	color: #a09fb1;
+}
+.container-date {
+	font-family: Raleway;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 18px;
+	/* //METER ESTO EN GRID SERA MAS FACIL */
+}
