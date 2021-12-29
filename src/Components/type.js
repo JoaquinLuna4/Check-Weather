@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const Type = () => {
 	const API =
-		"https://api.openweathermap.org/data/2.5/weather?q=cordoba&appid=dcd20e9b46ed770b171e69f37ee13d57";
+		"https://api.openweathermap.org/data/2.5/weather?q=cordoba&appid=dcd20e9b46ed770b171e69f37ee13d57&lang=es";
 	// const API = "https://jsonplaceholder.typicode.com/users";
 	const [est, setEst] = React.useState([]);
 	// let carga;

@@ -43,8 +43,9 @@ class Resume extends Component {
 						state="https://images.vexels.com/media/users/3/234492/isolated/lists/03325d6a72e4f878170e0076f08bab39-cielo-de-tiempo-en-la-nube.png"
 						alt="Preview image from weather"
 					/>
-					<Grade number="15 °C" />
-					<Type />
+
+					{/* <Grade /> */}
+					{/* <Type /> */}
 					<Date today="Fri, 5 Jun" />
 
 					{/* EXAMPLE FETCH DATA FUNCIONA */}
