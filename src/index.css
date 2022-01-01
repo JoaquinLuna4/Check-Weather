@@ -41,6 +41,9 @@ body {
 .mar-top16 {
 	margin-top: 16px;
 }
+.mar-bottom16 {
+	margin-bottom: 16px;
+}
 
 .type-value {
 	font-family: Raleway;
@@ -55,14 +58,18 @@ body {
 	font-weight: 500;
 	font-size: 18px;
 	display: flex;
+	color: #e7e7eb;
 }
 .containerDateInfo {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
+	align-items: center;
+	color: #e7e7eb;
 }
 .footerdate {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
+	color: #e7e7eb;
 }

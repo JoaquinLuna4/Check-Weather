@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import Date from "./date";
 import PreviewPic from "./preview";
 import Type from "./type";
@@ -45,18 +46,8 @@ class Resume extends Component {
 					/>
 
 					{/* <Grade /> */}
-					{/* <Type /> */}
-					<Date today="Fri, 5 Jun" />
-
-					{/* EXAMPLE FETCH DATA FUNCIONA */}
-					{/* <ul>
-						{data.map((e) => (
-							<li key={e.id}>
-								<a href={e.url}>{e.title}</a>
-								{console.log(e.title)}
-							</li>
-						))}
-					</ul> */}
+					<Type />
+					{/* <Date today="Fri, 5 Jun" /> */}
 				</div>
 			</React.Fragment>
 		);

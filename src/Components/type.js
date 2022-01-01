@@ -1,26 +1,43 @@
-import React, { useState } from "react";
+import React from "react";
+import { Spinner } from "react-bootstrap";
 
 const Type = () => {
 	const API =
 		"https://api.openweathermap.org/data/2.5/weather?q=cordoba&appid=dcd20e9b46ed770b171e69f37ee13d57&lang=es";
-	// const API = "https://jsonplaceholder.typicode.com/users";
+
 	const [est, setEst] = React.useState([]);
-	// let carga;
+	let [isLoading, setLoading] = React.useState(true);
+	console.log(isLoading);
+
 	React.useEffect(() => {
+		fetch(API).then((users) => {
+			setLoading(false);
+			setEst(users);
+		});
 		apiGet();
-		// setEst((carga = true));
 	}, []);
 
 	const apiGet = async () => {
 		const data = await fetch(API);
 		const users = await data.json();
 		setEst(users);
-		// setEst((carga = false));
+		setLoading(false);
 	};
+
 	return (
 		<React.Fragment>
-			{/* <h2 className="center type-value">Shower</h2> */}
-			<h2 className="center type-value">{est.weather[0].description}</h2>
+			<div className="containerType footerdate">
+				{/* {isLoading ? (
+					<Spinner animation="border" className="center" />
+				) : (
+					<span className="containerDateInfo center">
+						<h2 className="center type-value">{est.weather[0].description}</h2>
+						<h2 className="center type-value">Shower</h2>
+					</span>
+				)} */}
+				<h2 className="center type-value">{est.weather[0].description}</h2>
+				{/* <Spinner animation="border" className="center" /> */}
+			</div>
 		</React.Fragment>
 	);
 };

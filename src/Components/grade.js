@@ -31,7 +31,6 @@ const Grade = () => {
 			) : (
 				<h2 className="center grade-value">{Math.trunc(est.main.temp)}°C</h2>
 			)}
-			{/* <h2 className="center grade-value">CARGANDO CARNAL</h2> */}
 
 			{/* <h2 className="center grade-value">{Math.trunc(est.main.temp)}°C</h2> */}
 		</React.Fragment>
