@@ -9,11 +9,13 @@ const Date = () => {
 	const [isLoading, setLoading] = React.useState(true);
 
 	React.useEffect(() => {
-		fetch(API).then((users) => {
-			setLoading(false);
-			setEst(users);
-		});
-		apiGet();
+		const timer = setTimeout(() => {
+			apiGet();
+		}, 500);
+
+		return () => {
+			clearTimeout(timer);
+		};
 	}, []);
 
 	const apiGet = async () => {

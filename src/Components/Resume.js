@@ -45,9 +45,9 @@ class Resume extends Component {
 						alt="Preview image from weather"
 					/>
 
-					{/* <Grade /> */}
+					<Grade />
 					<Type />
-					{/* <Date today="Fri, 5 Jun" /> */}
+					<Date today="Fri, 5 Jun" />
 				</div>
 			</React.Fragment>
 		);

@@ -1,4 +1,5 @@
 import React from "react";
+import { Spinner } from "react-bootstrap";
 
 const Grade = () => {
 	const API =
@@ -6,16 +7,16 @@ const Grade = () => {
 	const [est, setEst] = React.useState([]);
 
 	const [isLoading, setLoading] = React.useState(true);
-	console.log(isLoading, "el loading abajo del estate");
-	console.log(est, "el est abajo del true");
 	React.useEffect(() => {
-		setLoading(true);
-		fetch(API).then((users) => {
-			setLoading(false);
-			setEst(false);
-			console.log(isLoading, "debe ser false");
-		});
-		apiGet();
+		if (isLoading) {
+			const timer = setTimeout(() => {
+				apiGet();
+			}, 500);
+
+			return () => {
+				clearTimeout(timer);
+			};
+		}
 	}, []);
 
 	const apiGet = async () => {
@@ -27,12 +28,10 @@ const Grade = () => {
 	return (
 		<React.Fragment>
 			{isLoading ? (
-				<h2 className="center grade-value">CARGANDO CARNAL</h2>
+				<Spinner animation="border" />
 			) : (
 				<h2 className="center grade-value">{Math.trunc(est.main.temp)}°C</h2>
 			)}
-
-			{/* <h2 className="center grade-value">{Math.trunc(est.main.temp)}°C</h2> */}
 		</React.Fragment>
 	);
 };
