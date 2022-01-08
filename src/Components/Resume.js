@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import Date from "./date";
+import FormHook from "./formulario";
 import PreviewPic from "./preview";
 import Type from "./type";
 import Grade from "./grade";
@@ -40,13 +41,14 @@ class Resume extends Component {
 		return (
 			<React.Fragment>
 				<div className="container-resume">
-					<PreviewPic
+					{/* <PreviewPic
 						state="https://images.vexels.com/media/users/3/234492/isolated/lists/03325d6a72e4f878170e0076f08bab39-cielo-de-tiempo-en-la-nube.png"
 						alt="Preview image from weather"
-					/>
+					/> */}
 
-					<Grade />
-					<Type />
+					{/* <Grade /> */}
+					{/* <Type /> */}
+					<FormHook />
 					<Date today="Fri, 5 Jun" />
 				</div>
 			</React.Fragment>

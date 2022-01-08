@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Date from "./date";
 
 const URL =
 	"https://api.openweathermap.org/data/2.5/weather?q=cordoba&appid=dcd20e9b46ed770b171e69f37ee13d57";
@@ -8,6 +9,7 @@ const SearchCard = () => {
 	const [usuarios, setUsuarios] = React.useState([]);
 	const [tablaUsuarios, setTablaUsuarios] = React.useState([]);
 	const [busqueda, setBusqueda] = React.useState("");
+	console.log(busqueda, "state del busqueda");
 
 	const peticionesGet = async () => {
 		await axios
@@ -22,7 +24,7 @@ const SearchCard = () => {
 	};
 	const handleChange = (e) => {
 		console.log(e.target.value);
-		// setBusqueda(e.target.value);
+		setBusqueda(e.target.value);
 		// filtrar(e.target.value);
 	};
 	// const filtrar = (terminoBusqueda) => {
@@ -50,13 +52,12 @@ const SearchCard = () => {
 			<div className="containerBusqueda">
 				<input
 					className="form-control inputBuscar"
-					// value={busqueda}
 					// placeholder="Búsqueda por Nombre o Empresa"
 					onChange={handleChange}
 				/>
 			</div>
 			<button className="btn btn-success">Submiteo</button>
-			<h1>Hello world </h1>
+			<Date city="cordoba" />
 		</React.Fragment>
 	);
 };

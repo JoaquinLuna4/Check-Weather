@@ -9,8 +9,8 @@ class App extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				{/* <Resume /> */}
-				<SearchCard />
+				<Resume />
+				{/* <SearchCard /> */}
 			</React.Fragment>
 		);
 	}
