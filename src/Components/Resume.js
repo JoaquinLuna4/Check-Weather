@@ -49,7 +49,7 @@ class Resume extends Component {
 					{/* <Grade /> */}
 					{/* <Type /> */}
 					<FormHook />
-					<Date today="Fri, 5 Jun" />
+					{/* <Date today="Fri, 5 Jun" /> */}
 				</div>
 			</React.Fragment>
 		);
