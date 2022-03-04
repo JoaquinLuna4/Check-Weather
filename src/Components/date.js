@@ -10,14 +10,13 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 // 	}
 
 const Date = (props) => {
-	// const city = "cordoba";
-
-	const validationLocation = () => {
+	const city = props.dataso;
+	/*
+	const validateLocation = () => {
 		if (!props.dataso) {
 			city = "cordoba";
 		} else city = props.dataso;
-	};
-	const city = validationLocation();
+	};*/
 	console.log(city, "city en el date");
 	const API = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=dcd20e9b46ed770b171e69f37ee13d57`;
 
@@ -49,7 +48,7 @@ const Date = (props) => {
 
 					<h4 className="center pad-right10 mar-botton16"> . </h4>
 
-					<h4 className="center pad-right10">14 jul</h4>
+					<h4 className="center pad-right10">4 mar 2022</h4>
 				</div>
 				<footer className="center footerdate">
 					{isLoading ? (

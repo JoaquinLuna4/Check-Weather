@@ -9,7 +9,7 @@ class App extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<Resume />
+				<Resume city="santa fe" />
 				{/* <SearchCard /> */}
 			</React.Fragment>
 		);

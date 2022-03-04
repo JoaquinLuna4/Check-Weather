@@ -1,17 +1,19 @@
 import React from "react";
 import { Spinner } from "react-bootstrap";
 
-const Grade = () => {
-	const API =
-		"https://api.openweathermap.org/data/2.5/weather?q=cordoba&units=metric&appid=dcd20e9b46ed770b171e69f37ee13d57&lang=es";
+const Grade = (props) => {
+	const city = props.dataso;
+	const API = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=dcd20e9b46ed770b171e69f37ee13d57`;
+
 	const [est, setEst] = React.useState([]);
 
 	const [isLoading, setLoading] = React.useState(true);
+
 	React.useEffect(() => {
 		if (isLoading) {
 			const timer = setTimeout(() => {
 				apiGet();
-			}, 500);
+			}, 100);
 
 			return () => {
 				clearTimeout(timer);
@@ -25,6 +27,7 @@ const Grade = () => {
 		setEst(users);
 		setLoading(false);
 	};
+	console.log(est.main, "valor del numero");
 	return (
 		<React.Fragment>
 			{isLoading ? (

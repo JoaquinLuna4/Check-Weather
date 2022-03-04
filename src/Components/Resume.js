@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 import Date from "./date";
 import FormHook from "./formulario";
@@ -10,7 +10,7 @@ import Grade from "./grade";
 // 	"https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=dcd20e9b46ed770b171e69f37ee13d57";
 // const DEFAULT_QUERY = "redux";
 
-class Resume extends Component {
+const Resume = (props) => {
 	// componentDidMount() {
 	// 	fetch(API + DEFAULT_QUERY)
 	// 		.then((response) => response.json())
@@ -37,22 +37,20 @@ class Resume extends Component {
 	// 	});
 	// };
 
-	render() {
-		return (
-			<React.Fragment>
-				<div className="container-resume">
-					{/* <PreviewPic
-						state="https://images.vexels.com/media/users/3/234492/isolated/lists/03325d6a72e4f878170e0076f08bab39-cielo-de-tiempo-en-la-nube.png"
-						alt="Preview image from weather"
-					/> */}
+	return (
+		<React.Fragment>
+			<div className="container-resume">
+				<PreviewPic
+					state="https://images.vexels.com/media/users/3/234492/isolated/lists/03325d6a72e4f878170e0076f08bab39-cielo-de-tiempo-en-la-nube.png"
+					alt="Preview image from weather"
+				/>
 
-					{/* <Grade /> */}
-					{/* <Type /> */}
-					<FormHook />
-					{/* <Date today="Fri, 5 Jun" /> */}
-				</div>
-			</React.Fragment>
-		);
-	}
-}
+				<Grade dataso={props.city} />
+				<Type dataso={props.city} />
+				{/* <FormHook /> */}
+				<Date today="Fri, 5 Jun" dataso={props.city} />
+			</div>
+		</React.Fragment>
+	);
+};
 export default Resume;
