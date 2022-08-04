@@ -39,7 +39,7 @@ const Date = (props) => {
 		setEst(users);
 		setLoading(false);
 	};
-
+	console.log(est.name, "est en el date");
 	return (
 		<React.Fragment>
 			<div className="containerDate">

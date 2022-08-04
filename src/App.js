@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SearchCard from "./Components/searchResult.js";
@@ -9,7 +9,8 @@ class App extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<Resume city="santa fe" />
+				<Resume city="london" />
+
 				{/* <SearchCard /> */}
 			</React.Fragment>
 		);

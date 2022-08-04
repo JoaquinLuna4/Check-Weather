@@ -37,6 +37,13 @@ const Resume = (props) => {
 	// 	});
 	// };
 
+	///agregado 4/08 INTENTAMOS AGREGAR FORMULARIO
+	// ACTUALMENTE NO SE ACTUALIZA SI SE CAMBIA EL VALOR DEL FORMULARIO
+	const [ciudad, setCiudad] = React.useState([]);
+	const handleChange = (e) => {
+		setCiudad(e.target.value);
+	};
+
 	return (
 		<React.Fragment>
 			<div className="container-resume">
@@ -44,11 +51,24 @@ const Resume = (props) => {
 					state="https://images.vexels.com/media/users/3/234492/isolated/lists/03325d6a72e4f878170e0076f08bab39-cielo-de-tiempo-en-la-nube.png"
 					alt="Preview image from weather"
 				/>
-
-				<Grade dataso={props.city} />
-				<Type dataso={props.city} />
+				{/* COMPONENTE TEMPERATURA */}
+				{/* <Grade dataso={props.city} />  */}
+				{/* COMPONENTE CIUDAD */}
+				{/* <Type dataso={props.city} /> */}
 				{/* <FormHook /> */}
-				<Date today="Fri, 5 Jun" dataso={props.city} />
+
+				{/* COMPONENTE FECHA */}
+
+				{/* INTENTAMOS AGREGAR FORMULARIO PARA ELEGIR CIUDAD QUE QUEREMOS */}
+				<input
+					type="text"
+					placeholder="Search"
+					id="ciudad"
+					onChange={(e) => handleChange(e)}
+				/>
+
+				{/* HASTA ACA FUERON LOS CAMBIOS  */}
+				<Date today="Fri, 5 Jun" dataso={ciudad} />
 			</div>
 		</React.Fragment>
 	);
