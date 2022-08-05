@@ -3,6 +3,7 @@ import { Spinner } from "react-bootstrap";
 
 const Grade = (props) => {
 	const city = props.dataso;
+	console.log(city, "city");
 	const API = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=dcd20e9b46ed770b171e69f37ee13d57`;
 
 	const [est, setEst] = React.useState([]);
@@ -13,13 +14,13 @@ const Grade = (props) => {
 		if (isLoading) {
 			const timer = setTimeout(() => {
 				apiGet();
-			}, 100);
+			}, 500);
 
 			return () => {
 				clearTimeout(timer);
 			};
 		}
-	}, []);
+	});
 
 	const apiGet = async () => {
 		const data = await fetch(API);
@@ -27,7 +28,7 @@ const Grade = (props) => {
 		setEst(users);
 		setLoading(false);
 	};
-	console.log(est.main, "valor del numero");
+	console.log(est.main, "valor del numero", est.name, "valor del nombre");
 	return (
 		<React.Fragment>
 			{isLoading ? (

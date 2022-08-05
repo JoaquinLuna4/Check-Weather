@@ -37,13 +37,7 @@ const Resume = (props) => {
 	// 	});
 	// };
 
-	///agregado 4/08 INTENTAMOS AGREGAR FORMULARIO
-	// ACTUALMENTE NO SE ACTUALIZA SI SE CAMBIA EL VALOR DEL FORMULARIO
-	const [ciudad, setCiudad] = React.useState([]);
-	const handleChange = (e) => {
-		setCiudad(e.target.value);
-	};
-
+	const [Search, setSearch] = React.useState("");
 	return (
 		<React.Fragment>
 			<div className="container-resume">
@@ -52,23 +46,28 @@ const Resume = (props) => {
 					alt="Preview image from weather"
 				/>
 				{/* COMPONENTE TEMPERATURA */}
-				{/* <Grade dataso={props.city} />  */}
+				<Grade dataso={"cordoba"} />
+				{
+					//******************* ESTO NO ESTA ANDANDO, QUEDA TILDADO EN EL ULTIMO QUE SE PONGA */
+				}
+
 				{/* COMPONENTE CIUDAD */}
-				{/* <Type dataso={props.city} /> */}
+				{/* <Type dataso={Search} /> */}
 				{/* <FormHook /> */}
 
-				{/* COMPONENTE FECHA */}
+				{/* BUSQUEDA SE LOGRA PARA COMPONENT DATE, NO IMPACTA EN GRADE */}
+				<form
+					onSubmit={(e) => {
+						e.preventDefault();
+						setSearch(e.target.ciudad.value);
+					}}
+				>
+					<input type="text" name="ciudad" placeholder="Buscar ciudad" />
+					<input type="submit" value="search" />
+				</form>
 
-				{/* INTENTAMOS AGREGAR FORMULARIO PARA ELEGIR CIUDAD QUE QUEREMOS */}
-				<input
-					type="text"
-					placeholder="Search"
-					id="ciudad"
-					onChange={(e) => handleChange(e)}
-				/>
-
-				{/* HASTA ACA FUERON LOS CAMBIOS  */}
-				<Date today="Fri, 5 Jun" dataso={ciudad} />
+				{/* COMPONENTE FECHA Y CIUDAD*/}
+				{/* <Date today="Fri, 5 Jun" dataso={Search} /> */}
 			</div>
 		</React.Fragment>
 	);

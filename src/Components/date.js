@@ -3,21 +3,32 @@ import { Spinner } from "react-bootstrap";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 
 /// CURRENT LOCATION USER!!! /////
-// if (navigator.geolocation) { //check if geolocation is available
-// 	navigator.geolocation.getCurrentPosition(function(position){
-// 	console.log(position);
-// 	});
-// 	}
+/*
+const currentLocation = (lat, lon) => {
+	if (navigator.geolocation) {
+		//check if geolocation is available
+		navigator.geolocation.getCurrentPosition(function (position) {
+			return {
+				lat: position.coords.latitude,        //ESTA LOGICA NO ESTA MUY CLARA
+				lon: position.coords.longitude,
+			}
+			
+			});
+			
+	}
+	
+};*/
 
 const Date = (props) => {
 	const city = props.dataso;
+
+	// props.dataso;
 	/*
-	const validateLocation = () => {
-		if (!props.dataso) {
-			city = "cordoba";
-		} else city = props.dataso;
-	};*/
-	console.log(city, "city en el date");
+const validateLocation = () => {
+	if (!props.dataso) {
+		city = "cordoba";
+	} else city = props.dataso;
+};*/
 	const API = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=dcd20e9b46ed770b171e69f37ee13d57`;
 
 	const [est, setEst] = React.useState([]);
@@ -31,7 +42,7 @@ const Date = (props) => {
 		return () => {
 			clearTimeout(timer);
 		};
-	}, []);
+	});
 
 	const apiGet = async () => {
 		const data = await fetch(API);
@@ -39,7 +50,7 @@ const Date = (props) => {
 		setEst(users);
 		setLoading(false);
 	};
-	console.log(est.name, "est en el date");
+	// console.log(est.name, "est en el date.js");
 	return (
 		<React.Fragment>
 			<div className="containerDate">
