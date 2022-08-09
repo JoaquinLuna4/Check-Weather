@@ -3,32 +3,31 @@ import { Spinner } from "react-bootstrap";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 
 /// CURRENT LOCATION USER!!! /////
-/*
-const currentLocation = (lat, lon) => {
-	if (navigator.geolocation) {
-		//check if geolocation is available
-		navigator.geolocation.getCurrentPosition(function (position) {
-			return {
-				lat: position.coords.latitude,        //ESTA LOGICA NO ESTA MUY CLARA
-				lon: position.coords.longitude,
-			}
-			
-			});
-			
-	}
-	
-};*/
+
+// function geoFindMe() {
+// 	function success(position) {
+// 		const latitude = position.coords.latitude;
+// 		const longitude = position.coords.longitude;
+// 		// console.log(latitude, "latitud", longitude, "longitud");
+// 		return `${latitude},${longitude}`;
+// 	}
+// 	function error() {
+// 		// console.log("Unable to retrieve your location");
+// 	}
+// 	if (!navigator.geolocation) {
+// 		// console.log("Geolocation is not supported by your browser");
+// 	} else {
+// 		navigator.geolocation.getCurrentPosition(success, error);
+// 	}
+// 	return success;
+// }
 
 const Date = (props) => {
-	const city = props.dataso;
+	const defaultCity = props.dataso;
+	// console.log(defaultCity, "defaultCity");
+	const busquedas = props.busqueda;
 
-	// props.dataso;
-	/*
-const validateLocation = () => {
-	if (!props.dataso) {
-		city = "cordoba";
-	} else city = props.dataso;
-};*/
+	let city = busquedas ? busquedas : defaultCity;
 	const API = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=dcd20e9b46ed770b171e69f37ee13d57`;
 
 	const [est, setEst] = React.useState([]);

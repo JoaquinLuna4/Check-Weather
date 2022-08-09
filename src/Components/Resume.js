@@ -36,27 +36,29 @@ const Resume = (props) => {
 	// 		data: data,
 	// 	});
 	// };
+	/// CURRENT LOCATION USER!!! /////
+	/*
+const currentLocation = (lat, lon) => {
+	if (navigator.geolocation) {
+		//check if geolocation is available
+		navigator.geolocation.getCurrentPosition(function (position) {
+			return {
+				lat: position.coords.latitude,        //ESTA LOGICA NO ESTA MUY CLARA
+				lon: position.coords.longitude,
+			}
+			
+			});
+			
+	}
+	
+};*/
 
 	const [Search, setSearch] = React.useState("");
 	return (
 		<React.Fragment>
 			<div className="container-resume">
-				<PreviewPic
-					state="https://images.vexels.com/media/users/3/234492/isolated/lists/03325d6a72e4f878170e0076f08bab39-cielo-de-tiempo-en-la-nube.png"
-					alt="Preview image from weather"
-				/>
-				{/* COMPONENTE TEMPERATURA */}
-				<Grade dataso={"cordoba"} />
-				{
-					//******************* ESTO NO ESTA ANDANDO, QUEDA TILDADO EN EL ULTIMO QUE SE PONGA */
-				}
-
-				{/* COMPONENTE CIUDAD */}
-				{/* <Type dataso={Search} /> */}
-				{/* <FormHook /> */}
-
-				{/* BUSQUEDA SE LOGRA PARA COMPONENT DATE, NO IMPACTA EN GRADE */}
 				<form
+					className="center"
 					onSubmit={(e) => {
 						e.preventDefault();
 						setSearch(e.target.ciudad.value);
@@ -65,9 +67,24 @@ const Resume = (props) => {
 					<input type="text" name="ciudad" placeholder="Buscar ciudad" />
 					<input type="submit" value="search" />
 				</form>
+				<PreviewPic
+					state="https://images.vexels.com/media/users/3/234492/isolated/lists/03325d6a72e4f878170e0076f08bab39-cielo-de-tiempo-en-la-nube.png"
+					alt="Preview image from weather"
+				/>
+				{/* COMPONENTE TEMPERATURA */}
+				{/* <Grade dataso={"cordoba"} busqueda={Search} /> */}
+				{
+					//******************* ESTO NO ESTA ANDANDO, QUEDA TILDADO EN EL ULTIMO QUE SE PONGA */
+				}
+
+				{/* COMPONENTE TIPO DE CLIMA */}
+				{/* <Type dataso={"cordoba"} busqueda={Search} /> */}
+				{/* <FormHook /> */}
+
+				{/* BUSQUEDA SE LOGRA PARA COMPONENT DATE, NO IMPACTA EN GRADE */}
 
 				{/* COMPONENTE FECHA Y CIUDAD*/}
-				{/* <Date today="Fri, 5 Jun" dataso={Search} /> */}
+				<Date today="Fri, 5 Jun" dataso={"cordoba"} busqueda={Search} />
 			</div>
 		</React.Fragment>
 	);
