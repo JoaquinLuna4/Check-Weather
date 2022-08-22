@@ -30,6 +30,16 @@ const Type = (props) => {
 		setLoading(false);
 	};
 
+	/////////////////****************** INTENTAMOS PONER CLIMA EN MAYUS */
+	const descriptionWeather = est.weather[0].description;
+	/*const tipoClima = descriptionWeather.split(" ");
+	const mayusculas = () => {
+		return tipoClima
+			.map((descripcion) => {
+				return descripcion[0].toUpperCase() + descripcion.substring(1);
+			})
+			.join(" ");
+	};*/
 	return (
 		<React.Fragment>
 			<div className="containerType footerdate">
@@ -37,7 +47,7 @@ const Type = (props) => {
 					<Spinner animation="border" className="center" />
 				) : (
 					<span className="containerDateInfo center">
-						<h2 className="center type-value">{est.weather[0].description}</h2>
+						<h2 className="center type-value">{descriptionWeather}</h2>
 					</span>
 				)}
 			</div>

@@ -1,7 +1,5 @@
 import React from "react";
-
-import Date from "./date";
-import FormHook from "./formulario";
+import Dates from "./dates";
 import PreviewPic from "./preview";
 import Type from "./type";
 import Grade from "./grade";
@@ -11,31 +9,6 @@ import Grade from "./grade";
 // const DEFAULT_QUERY = "redux";
 
 const Resume = (props) => {
-	// componentDidMount() {
-	// 	fetch(API + DEFAULT_QUERY)
-	// 		.then((response) => response.json())
-	// 		.then((dataJson) => this.setState({ data: dataJson.data }));
-	// }
-	// componentDidMount() {
-	// 	fetch(API + DEFAULT_QUERY)
-	// 		.then((response) => response.json())
-	// 		.then((data) => console.log(data));
-	// }
-
-	//FORMATO JONY
-	// componentDidMount() {
-	// 	this.fetchData(
-	// 		"https://www.metaweather.com/api/location/search/?query=buenos%20aires"
-	// 	);
-	// }
-	// fetchData = async (url) => {
-	// 	const response = await fetch(url);
-	// 	const data = await response.json();
-	// 	console.log(data, "lo que trae la api");
-	// 	this.setState({
-	// 		data: data,
-	// 	});
-	// };
 	/// CURRENT LOCATION USER!!! /////
 	/*
 const currentLocation = (lat, lon) => {
@@ -52,6 +25,11 @@ const currentLocation = (lat, lon) => {
 	}
 	
 };*/
+	const fecha = new Date();
+	//El método toDateString() devuelve la fecha en un formato legible por un humano: Mon Aug 22 2022
+	const today = fecha.toDateString().slice(0, -4);
+	/*Como solo necesitamos dia, mes y numero usamos slice para eliminar los ultimos 4 caracteres
+	de la cadena de string.*/
 
 	const [Search, setSearch] = React.useState("");
 	return (
@@ -72,19 +50,13 @@ const currentLocation = (lat, lon) => {
 					alt="Preview image from weather"
 				/>
 				{/* COMPONENTE TEMPERATURA */}
-				{/* <Grade dataso={"cordoba"} busqueda={Search} /> */}
-				{
-					//******************* ESTO NO ESTA ANDANDO, QUEDA TILDADO EN EL ULTIMO QUE SE PONGA */
-				}
+				<Grade dataso={"cordoba"} busqueda={Search} />
 
 				{/* COMPONENTE TIPO DE CLIMA */}
-				{/* <Type dataso={"cordoba"} busqueda={Search} /> */}
-				{/* <FormHook /> */}
-
-				{/* BUSQUEDA SE LOGRA PARA COMPONENT DATE, NO IMPACTA EN GRADE */}
+				<Type dataso={"cordoba"} busqueda={Search} />
 
 				{/* COMPONENTE FECHA Y CIUDAD*/}
-				<Date today="Fri, 5 Jun" dataso={"cordoba"} busqueda={Search} />
+				<Dates day={today} dataso={"cordoba"} busqueda={Search} />
 			</div>
 		</React.Fragment>
 	);

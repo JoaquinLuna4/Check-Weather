@@ -22,9 +22,9 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 // 	return success;
 // }
 
-const Date = (props) => {
+const Dates = (props) => {
 	const defaultCity = props.dataso;
-	// console.log(defaultCity, "defaultCity");
+
 	const busquedas = props.busqueda;
 
 	let city = busquedas ? busquedas : defaultCity;
@@ -58,7 +58,7 @@ const Date = (props) => {
 
 					<h4 className="center pad-right10 mar-botton16"> . </h4>
 
-					<h4 className="center pad-right10">4 mar 2022</h4>
+					<h4 className="center pad-right10">{props.day}</h4>
 				</div>
 				<footer className="center footerdate">
 					{isLoading ? (
@@ -74,4 +74,4 @@ const Date = (props) => {
 		</React.Fragment>
 	);
 };
-export default Date;
+export default Dates;
