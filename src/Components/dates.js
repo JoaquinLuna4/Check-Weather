@@ -25,31 +25,6 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 const Dates = (props) => {
 	const defaultCity = props.dataso;
 
-	const busquedas = props.busqueda;
-
-	let city = busquedas ? busquedas : defaultCity;
-	const API = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=dcd20e9b46ed770b171e69f37ee13d57`;
-
-	const [est, setEst] = React.useState([]);
-	const [isLoading, setLoading] = React.useState(true);
-
-	React.useEffect(() => {
-		const timer = setTimeout(() => {
-			apiGet();
-		}, 500);
-
-		return () => {
-			clearTimeout(timer);
-		};
-	});
-
-	const apiGet = async () => {
-		const data = await fetch(API);
-		const users = await data.json();
-		setEst(users);
-		setLoading(false);
-	};
-	// console.log(est.name, "est en el date.js");
 	return (
 		<React.Fragment>
 			<div className="containerDate">
@@ -61,14 +36,10 @@ const Dates = (props) => {
 					<h4 className="center pad-right10">{props.day}</h4>
 				</div>
 				<footer className="center footerdate">
-					{isLoading ? (
-						<Spinner animation="border" />
-					) : (
-						<span className="containerDateInfo center">
-							<LocationOnOutlinedIcon fontSize="large" />
-							<h4 className="center">{est.name}</h4>
-						</span>
-					)}
+					<span className="containerDateInfo center">
+						<LocationOnOutlinedIcon fontSize="large" />
+						<h4 className="center">{defaultCity}</h4>
+					</span>
 				</footer>
 			</div>
 		</React.Fragment>
