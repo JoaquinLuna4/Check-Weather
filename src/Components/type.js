@@ -16,13 +16,12 @@ const Type = (props) => {
 			})
 			.join(" ");
 	};*/
+
 	return (
 		<React.Fragment>
 			<div className="containerType footerdate">
 				<span className="containerDateInfo center">
-					<h2 className="center type-value">
-						{descriptionWeather.weather[0].description}
-					</h2>
+					<h2 className="center type-value">{descriptionWeather}</h2>
 				</span>
 			</div>
 		</React.Fragment>

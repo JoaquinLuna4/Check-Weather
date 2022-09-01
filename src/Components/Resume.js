@@ -4,6 +4,7 @@ import PreviewPic from "./preview";
 import Type from "./type";
 import Grade from "./grade";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import { Spinner } from "react-bootstrap";
 
 const Resume = (props) => {
 	/// CURRENT LOCATION USER!!! /////
@@ -28,18 +29,29 @@ const currentLocation = (lat, lon) => {
 	const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=dcd20e9b46ed770b171e69f37ee13d57&lang=es`;
 
 	const [api, setApi] = React.useState([]);
+	const [isLoading, setLoading] = React.useState(true);
 
 	const apiGet = async () => {
 		const data = await fetch(url);
 		const users = await data.json();
 		setApi(users);
+		setLoading(false);
 	};
 	console.log(api, " este es api");
 
 	const [Search, setSearch] = React.useState("");
 	console.log(Search, "esto es el search");
+
 	React.useEffect(() => {
-		apiGet();
+		const timer = setTimeout(() => {
+			//Si no pongo este timer react no llega a cargar los nodos que se necesitan
+			//para los valores de type y grade
+			apiGet();
+		}, 0);
+
+		return () => {
+			clearTimeout(timer);
+		};
 	}, []);
 
 	const fecha = new Date();
@@ -50,49 +62,43 @@ const currentLocation = (lat, lon) => {
 
 	return (
 		<React.Fragment>
-			<div className="container-resume">
-				<header className="header-resume">
-					<form
-						className="form "
-						onSubmit={(e) => {
-							e.preventDefault();
-							setSearch(e.target.ciudad.value);
-						}}
-					>
-						<input
-							type="text"
-							name="ciudad"
-							placeholder="Search for places"
-							className="search mt-3 "
-						/>
-						{/* <input type="submit" value="search" /> */}
-					</form>
-					<a className="location  mt-3">
-						{/* <img
-							alt="current-location"
-							name="current-location"
-							src="/Check-Weather/src/Components/images/location_on_white_24dp.svg"
-							className="location mt-3"
+			{isLoading ? (
+				<Spinner animation="border" className="center container-resume" />
+			) : (
+				<div className="container-resume">
+					<header className="header-resume center">
+						<form
+							className="form mt-3 "
+							onSubmit={(e) => {
+								e.preventDefault();
+								setSearch(e.target.ciudad.value);
+							}}
 						>
-							location
-						</img> */}
+							<input
+								type="text"
+								name="ciudad"
+								placeholder="Search for places"
+								className="search"
+							/>
+						</form>
+						<a className="location mt-3">
+							<LocationOnOutlinedIcon fontSize="medium" className="center" />
+						</a>
+					</header>
+					<PreviewPic
+						state="https://images.vexels.com/media/users/3/234492/isolated/lists/03325d6a72e4f878170e0076f08bab39-cielo-de-tiempo-en-la-nube.png"
+						alt="Preview image from weather"
+					/>
+					{/* COMPONENTE TEMPERATURA  */}
+					<Grade dataso={Math.trunc(api.main.temp)} busqueda={Search} />
 
-						<LocationOnOutlinedIcon fontSize="large" />
-					</a>
-				</header>
-				<PreviewPic
-					state="https://images.vexels.com/media/users/3/234492/isolated/lists/03325d6a72e4f878170e0076f08bab39-cielo-de-tiempo-en-la-nube.png"
-					alt="Preview image from weather"
-				/>
-				{/* COMPONENTE TEMPERATURA */}
-				<Grade dataso={api.name} busqueda={Search} />
+					{/*  COMPONENTE TIPO DE CLIMA */}
+					<Type dataso={api.weather[0].description} busqueda={Search} />
 
-				{/* COMPONENTE TIPO DE CLIMA */}
-				<Type dataso={api} busqueda={Search} />
-
-				{/* COMPONENTE FECHA Y CIUDAD*/}
-				<Dates day={today} dataso={api.name} busqueda={Search} />
-			</div>
+					{/*  COMPONENTE FECHA Y CIUDAD*/}
+					<Dates day={today} dataso={api.name} busqueda={Search} />
+				</div>
+			)}
 		</React.Fragment>
 	);
 };
