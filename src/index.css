@@ -133,38 +133,80 @@ body {
 }
 
 /* Weekly component */
-.container-weekly{
-	position: absolute;
-    width: 70%;
-    height: 100%;
-    left: 459px;
-    top: 0px;
-    background-color: #100E1D;
-
-	font-family: 'Raleway';
-	font-style: normal;
-	color: #E7E7EB;
-}
-
 .loading{
 	display: flex;
     justify-content: center;
     height: 100%;
     align-items: center;
 }
+
+.container-weekly{
+	position: absolute;
+    width: 70%;
+    height: 100%;
+    left: 459px;
+    top: 0px;
+		
+
+	background-color: #100E1D;
+}
+.title-weekly{
+	font-family: 'Raleway';
+	font-style: normal;
+
+	color: #E7E7EB;
+
+}
+.container-highlight{
+	display: grid;
+	font-family: 'Raleway';
+	font-style: normal;
+	grid-template:  "wind 			humidity" 		
+					"visibility		pressure" 	;
+	height: 100%;
+	color: #E7E7EB;
+}
+
+.highlight{
+	margin: auto auto auto auto;
+}
 .highlight-card1{
 	position: relative;
 	width: 328px;
 	height: 204px;
 	border: 3px solid rgb(253, 228, 0);
-	
+	grid-area: "wind";
+
 	background: #1E213A;;
 }
 .highlight-card2{
+
+	position: relative;
+	width: 328px;
+	height: 204px;
+	border: 3px solid rgb(253, 228, 0);
+	grid-area: "humidity";
+	background: #1E213A;;
+}
+.highlight-card3{
 	position: relative;
 	width: 328px;
 	height: 159px;
 	border: 3px solid #fff;
-	background: #1E213A;
+	grid-area: "visibility";
+	
+
 	color: green;
+	background: #1E213A;
+}
+.highlight-card4{
+	position: relative;
+	width: 328px;
+	height: 159px;
+	border: 3px solid #fff;
+	grid-area: "pressure";
+	
+
+	color: green;
+	background: #1E213A;
 }

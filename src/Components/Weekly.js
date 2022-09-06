@@ -35,22 +35,25 @@ const Weekly = () => {
 					</div>
 				</div>
 			) : (
-				<div className="container-weekly center">
-					<div className="highlight-card1">
-						<h6>Wind Status</h6>
-						<h3>Speed {api.wind.speed} mph</h3>
-					</div>
-					<div className="highlight-card1">
-						<h6>Humidity</h6>
-						<h3> {api.main.humidity} %</h3>
-					</div>
-					<div className="highlight-card2">
-						<h6>Visibility</h6>
-						<h3> {api.visibility} miles</h3>
-					</div>
-					<div className="highlight-card2">
-						<h6>Air Pressure</h6>
-						<h3> {api.main.pressure} mb</h3>
+				<div className="container-weekly">
+					<h2 className="title-weekly ">Today's Highlights</h2>
+					<div className="container-highlight center">
+						<div className="highlight-card1 highlight ">
+							<h6>Wind Status</h6>
+							<h3>Speed {api.wind.speed} mph</h3>
+						</div>
+						<div className="highlight-card2 highlight">
+							<h6>Humidity</h6>
+							<h3> {api.main.humidity} %</h3>
+						</div>
+						<div className="highlight-card3 highlight">
+							<h6>Visibility</h6>
+							<h3> {api.visibility} miles</h3>
+						</div>
+						<div className="highlight-card4 highlight">
+							<h6>Air Pressure</h6>
+							<h3> {api.main.pressure} mb</h3>
+						</div>
 					</div>
 				</div>
 			)}
