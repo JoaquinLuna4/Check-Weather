@@ -9,6 +9,7 @@ class App extends Component {
 		return (
 			<React.Fragment>
 				<Resume />
+
 				<Weekly />
 			</React.Fragment>
 		);

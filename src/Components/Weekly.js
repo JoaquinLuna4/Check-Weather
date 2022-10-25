@@ -2,6 +2,7 @@ import React from "react";
 import GraphicBar from "./bar-graphic";
 import { Spinner } from "react-bootstrap";
 import PreviewPic from "./preview";
+import Forecast from "./Forecast";
 
 // https://api.openweathermap.org/data/2.5/forecast?q=london&cnt=5&appid=dcd20e9b46ed770b171e69f37ee13d57
 // ESTE LINK TIENE LA API CON EL DETALLE SEMANALLLLL https://openweathermap.org/forecast5#limit ---> API DOCUMENTACION
@@ -11,7 +12,6 @@ function Weekly() {
 	const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=dcd20e9b46ed770b171e69f37ee13d57&lang=es`;
 
 	const [api, setApi] = React.useState([]);
-	console.log(api);
 
 	const [isLoading, setLoading] = React.useState(true);
 
@@ -23,8 +23,6 @@ function Weekly() {
 	};
 	React.useEffect(() => {
 		const timer = setTimeout(() => {
-			//Si no pongo este timer react no llega a cargar los nodos que se necesitan
-			//para los valores de type y grade
 			apiGet();
 		}, 0);
 
@@ -44,48 +42,7 @@ function Weekly() {
 			) : (
 				<div className="container-weekly">
 					<div className="cont-week-content">
-						<div className="extend-weather center">
-							<div className="days-cards">
-								<header>Tue, 9 Jun</header>
-
-								<footer>
-									<div className="max-temp">16° C</div>
-									<div className="min-temp">11° C</div>
-								</footer>
-							</div>
-							<div className="days-cards">
-								<header>Tue, 9 Jun</header>
-
-								<footer>
-									<div className="max-temp">16° C</div>
-									<div className="min-temp">11° C</div>
-								</footer>
-							</div>
-							<div className="days-cards">
-								<header>Tue, 9 Jun</header>
-
-								<footer>
-									<div className="max-temp">16° C</div>
-									<div className="min-temp">11° C</div>
-								</footer>
-							</div>
-							<div className="days-cards">
-								<header>Tue, 9 Jun</header>
-
-								<footer>
-									<div className="max-temp">16° C</div>
-									<div className="min-temp">11° C</div>
-								</footer>
-							</div>
-							<div className="days-cards">
-								<header>Tue, 9 Jun</header>
-
-								<footer>
-									<div className="max-temp">16° C</div>
-									<div className="min-temp">11° C</div>
-								</footer>
-							</div>
-						</div>
+						<Forecast />
 
 						<h2>Today's Highlights</h2>
 						<div className="container-highlight center">

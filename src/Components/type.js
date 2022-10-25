@@ -1,6 +1,4 @@
 import React from "react";
-import { Spinner } from "react-bootstrap";
-
 const Type = (props) => {
 	const descriptionWeather = props.dataso;
 

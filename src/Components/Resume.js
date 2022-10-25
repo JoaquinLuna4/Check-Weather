@@ -3,7 +3,7 @@ import Dates from "./dates";
 import PreviewPic from "./preview";
 import Type from "./type";
 import Grade from "./grade";
-import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import Navbar from "./navbar";
 import { Spinner } from "react-bootstrap";
 
 const Resume = (props) => {
@@ -39,9 +39,6 @@ const currentLocation = (lat, lon) => {
 	};
 	console.log(api, " este es api");
 
-	const [Search, setSearch] = React.useState("");
-	console.log(Search, "esto es el search");
-
 	React.useEffect(() => {
 		const timer = setTimeout(() => {
 			//Si no pongo este timer react no llega a cargar los nodos que se necesitan
@@ -54,9 +51,19 @@ const currentLocation = (lat, lon) => {
 		};
 	}, []);
 
+	const dayjs = require("dayjs");
+	const localizedFormat = require("dayjs/plugin/localizedFormat");
+	const plugin = dayjs.extend(localizedFormat);
+
+	// console.log(parti(), "ESTO ES EL DAYS");
+
+	const today = dayjs()
+		.format("llll")
+		.slice(0, -14);
+	/*
 	const fecha = new Date();
 	//El método toDateString() devuelve la fecha en un formato legible por un humano: Mon Aug 22 2022
-	const today = fecha.toDateString().slice(0, -4);
+	const today = fecha.toGMTString().slice(0, -18);
 	/*Como solo necesitamos dia, mes y numero usamos slice para eliminar los ultimos 4 caracteres
 	de la cadena de string.*/
 
@@ -66,37 +73,20 @@ const currentLocation = (lat, lon) => {
 				<Spinner animation="border" className="center container-resume" />
 			) : (
 				<div className="container-resume">
-					<header className="header-resume center">
-						<form
-							className="form mt-3 "
-							onSubmit={(e) => {
-								e.preventDefault();
-								setSearch(e.target.ciudad.value);
-							}}
-						>
-							<input
-								type="text"
-								name="ciudad"
-								placeholder="Search for places"
-								className="search"
-							/>
-						</form>
-						<a className="location mt-3">
-							<LocationOnOutlinedIcon fontSize="medium" className="center" />
-						</a>
-					</header>
+					<Navbar />
 					<PreviewPic
 						state="https://images.vexels.com/media/users/3/234492/isolated/lists/03325d6a72e4f878170e0076f08bab39-cielo-de-tiempo-en-la-nube.png"
 						alt="Preview image from weather"
 					/>
+
 					{/* COMPONENTE TEMPERATURA  */}
-					<Grade dataso={Math.trunc(api.main.temp)} busqueda={Search} />
+					<Grade dataso={Math.trunc(api.main.temp)} />
 
 					{/*  COMPONENTE TIPO DE CLIMA */}
-					<Type dataso={api.weather[0].description} busqueda={Search} />
+					<Type dataso={api.weather[0].description} />
 
 					{/*  COMPONENTE FECHA Y CIUDAD*/}
-					<Dates day={today} dataso={api.name} busqueda={Search} />
+					<Dates day={today} dataso={api.name} />
 				</div>
 			)}
 		</React.Fragment>
