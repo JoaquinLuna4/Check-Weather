@@ -1,7 +1,6 @@
 import React from "react";
 import GraphicBar from "./bar-graphic";
 import { Spinner } from "react-bootstrap";
-import PreviewPic from "./preview";
 import Forecast from "./Forecast";
 
 // https://api.openweathermap.org/data/2.5/forecast?q=london&cnt=5&appid=dcd20e9b46ed770b171e69f37ee13d57

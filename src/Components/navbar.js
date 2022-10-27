@@ -9,7 +9,6 @@ import "../styles/navbar.css";
 const Navbar = () => {
 	// Components
 	const [navbarStatus, setNavbarStatus] = useState("default");
-	console.log(navbarStatus, "navbar statusss");
 
 	const displayNavbar =
 		navbarStatus === "default" ? (

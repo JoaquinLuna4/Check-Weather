@@ -6,6 +6,8 @@ import Grade from "./grade";
 import Navbar from "./navbar";
 import { Spinner } from "react-bootstrap";
 
+import { useapiContext } from "../ContextApp";
+
 const Resume = (props) => {
 	/// CURRENT LOCATION USER!!! /////
 	/*
@@ -24,29 +26,33 @@ const currentLocation = (lat, lon) => {
 	
 };*/
 
+	const datag = useapiContext();
+
 	/*CONSUMIENDO LA API*/
-	let city = "cordoba";
-	const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=dcd20e9b46ed770b171e69f37ee13d57&lang=es`;
+	let key = datag.data.apikey;
+	let city = datag.userCity ? datag.userCity : datag.data.defaultCity;
+
+	const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${key}&lang=es`;
 
 	const [api, setApi] = React.useState([]);
 	const [isLoading, setLoading] = React.useState(true);
-
+	console.log(datag.userCity, "usercity en resume");
 	const apiGet = async () => {
 		const data = await fetch(url);
 		const users = await data.json();
 		setApi(users);
 		setLoading(false);
 	};
-	console.log(api, " este es api");
 
 	React.useEffect(() => {
 		const timer = setTimeout(() => {
+			apiGet();
 			//Si no pongo este timer react no llega a cargar los nodos que se necesitan
 			//para los valores de type y grade
-			apiGet();
-		}, 0);
+		}, 1);
 
 		return () => {
+			setLoading(false);
 			clearTimeout(timer);
 		};
 	}, []);
@@ -55,18 +61,15 @@ const currentLocation = (lat, lon) => {
 	const localizedFormat = require("dayjs/plugin/localizedFormat");
 	const plugin = dayjs.extend(localizedFormat);
 
-	// console.log(parti(), "ESTO ES EL DAYS");
-
 	const today = dayjs()
 		.format("llll")
-		.slice(0, -14);
+		.slice(0, -15);
 	/*
-	const fecha = new Date();
-	//El método toDateString() devuelve la fecha en un formato legible por un humano: Mon Aug 22 2022
-	const today = fecha.toGMTString().slice(0, -18);
-	/*Como solo necesitamos dia, mes y numero usamos slice para eliminar los ultimos 4 caracteres
-	de la cadena de string.*/
-
+	// const fecha = new Date();
+	// //El método toDateString() devuelve la fecha en un formato legible por un humano: Mon Aug 22 2022
+	// const today = fecha.toGMTString().slice(0, -18);
+	// /*Como solo necesitamos dia, mes y numero usamos slice para eliminar los ultimos 4 caracteres
+	// de la cadena de string.*/
 	return (
 		<React.Fragment>
 			{isLoading ? (

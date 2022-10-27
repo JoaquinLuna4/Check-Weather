@@ -1,5 +1,4 @@
 import React from "react";
-import CloseIcon from "@mui/icons-material/Close";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 
 const NavbarDefault = ({ setNavbarStatus }) => {

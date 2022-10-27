@@ -2,8 +2,6 @@ import React from "react";
 const Type = (props) => {
 	const descriptionWeather = props.dataso;
 
-	const busquedas = props.busqueda;
-
 	/////////////////*  INTENTAMOS PONER CLIMA EN MAYUS */
 	//const descriptionWeather = est.weather[0].description;
 	/*const tipoClima = descriptionWeather.split(" ");

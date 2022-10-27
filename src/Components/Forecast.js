@@ -29,7 +29,7 @@ function Forecast() {
 			clearTimeout(timer);
 		};
 	}, []);
-	const fecha = new Date();
+
 	//El método toDateString() devuelve la fecha en un formato legible por un humano: Mon Aug 22 2022
 	// const today = fecha.toGMTString().slice(0, -18);
 	/*Como solo necesitamos dia, mes y numero usamos slice para eliminar los ultimos 4 caracteres
